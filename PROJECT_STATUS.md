@@ -474,6 +474,25 @@ accessibility audit).
   + tiger fullsuit photo + VELVET HOWL tagline, no old gold/art);
   favicon.png (48) + apple-touch-icon.png (180) now ivory VH monogram on
   plum. Verified: build 6 pages, npm test 11/11, qa-check 9/9, 116 tiles.
+- Client handoff push (Oct 11 2026, user-ran): fresh single-commit push to
+  https://github.com/dimeji29/velvet-howl (orphan fresh-main -> main,
+  303 files). ZACCH0 added as collaborator after 404 (private repo hides
+  from non-members). Vercel deploy from client repo next. Verified after:
+  build 6 pages, npm test 11/11, qa-check 9/9, 116 tiles.
+- Homepage strip fix (Oct 11 2026, user: 2nd + last not good enough):
+  2nd vhead-11 (side angle) -> vhead-09 (white/light blue fox front,
+  735x994); 4th vfull-04 (duplicate of About image) -> vfull-02 (tiger
+  close-up outdoors, 719x1080, not in hero/About). Strip now vhead-02 /
+  vhead-09 / vhead-19 / vfull-02, no on-page duplicates. Verified: build
+  6 pages, npm test 11/11, qa-check 9/9, 116 tiles.
+- Web3Forms key added (Oct 11 2026, user-pasted): forms.accessKey in
+  data/site.config.json now a real UUID (was WEB3FORMS_ACCESS_KEY
+  placeholder). dist/contact.html carries it after rebuild. Form failure
+  "Something went wrong…" on live is the old deploy (placeholder key
+  rejected by Web3Forms) — 3 local files (site.config, index strip,
+  PROJECT_STATUS) unpushed to dimeji29. Push + Vercel redeploy, then
+  retest live. Verified local: build 6 pages, npm test 11/11,
+  qa-check 9/9, 116 tiles.
 
 ## 14. Session rule (locked, Oct 10 2026)
 - At the START of every session: read PROJECT_STATUS.md, README.md and

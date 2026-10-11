@@ -24,7 +24,7 @@
   },
   "forms": {
     "provider": "web3forms",
-    "accessKey": "WEB3FORMS_ACCESS_KEY",
+    "accessKey": "a9ceb217-09b0-40af-b36a-4fbf01c775ed",
     "recipient": "abdullahkolawole48@gmail.com",
     "recipientNote": "Create the Web3Forms access key while signed in with this Gmail address, then paste the key into accessKey above."
   },
