@@ -1,0 +1,107 @@
+{
+  "siteName": "VELVET HOWL",
+  "domain": "https://velvet-howl.vercel.app",
+  "domainNote": "[CANONICAL_DOMAIN] placeholder: using velvet-howl.vercel.app until a custom domain exists",
+  "socials": [
+    {
+      "id": "discord",
+      "label": "Discord",
+      "user": "horla_dimeji",
+      "url": "https://discord.com/app",
+      "open": "Open Discord"
+    },
+    {
+      "id": "email",
+      "label": "Email",
+      "user": "Hidden until tapped",
+      "url": "",
+      "open": "Show email"
+    }
+  ],
+  "email": {
+    "user": "abdullahkolawole48",
+    "domain": "gmail.com"
+  },
+  "forms": {
+    "provider": "web3forms",
+    "accessKey": "WEB3FORMS_ACCESS_KEY",
+    "recipient": "abdullahkolawole48@gmail.com",
+    "recipientNote": "Create the Web3Forms access key while signed in with this Gmail address, then paste the key into accessKey above."
+  },
+  "nav": [
+    {
+      "href": "/",
+      "label": "Home",
+      "key": "index"
+    },
+    {
+      "href": "/gallery",
+      "label": "Gallery",
+      "key": "gallery"
+    },
+    {
+      "href": "/services",
+      "label": "Services",
+      "key": "services"
+    },
+    {
+      "href": "/pricing",
+      "label": "Pricing",
+      "key": "pricing"
+    },
+    {
+      "href": "/contact",
+      "label": "Contact",
+      "key": "contact"
+    },
+    {
+      "href": "/terms",
+      "label": "Terms",
+      "key": "terms"
+    }
+  ],
+  "services": [
+    {
+      "value": "fursuit-head",
+      "label": "Fursuit — Head Only",
+      "price": "$1,500+"
+    },
+    {
+      "value": "fursuit-mini-partial",
+      "label": "Fursuit — Mini Partial",
+      "price": "$2,700+"
+    },
+    {
+      "value": "fursuit-partial",
+      "label": "Fursuit — Partial",
+      "price": "$5,000+"
+    },
+    {
+      "value": "fursuit-full",
+      "label": "Fursuit — Full Suit",
+      "price": "$7,000+",
+      "priceConfirmed": false,
+      "priceNote": "Provisional starting price. Change it here when the client confirms the final price."
+    },
+    {
+      "value": "fursona-design",
+      "label": "Fursona Design",
+      "price": "Request a Quote"
+    },
+    {
+      "value": "vrchat-avatar",
+      "label": "VRChat Avatar",
+      "price": "Request a Quote"
+    },
+    {
+      "value": "vtuber-avatar",
+      "label": "VTuber Avatar",
+      "price": "Request a Quote"
+    },
+    {
+      "value": "other",
+      "label": "Other / Custom Request",
+      "price": "Request a Quote"
+    }
+  ]
+}
