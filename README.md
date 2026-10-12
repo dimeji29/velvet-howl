@@ -1,66 +1,61 @@
 # VELVET HOWL
 
-Static site built by `node scripts/build.mjs` into `dist/`. The commission form posts
-directly from the browser to Web3Forms, so there is no server code and no custom
-domain, DNS setup, Gmail password, OAuth or domain verification is needed.
+Custom fursuits, fursona design, and avatars for VRChat and VTubing — made to order by Dimeji.
 
-## Project layout
-- `data/site.config.json`: links, nav, socials, the 8 commission services and the Web3Forms settings (single source of truth)
-- `src/pages/*.html`: page bodies (first line is a meta comment with title and description)
-- `src/partials/`: shared head, header, footer, social block
-- `src/design-system.css` and `src/site.css`: approved design tokens and page styles
-- `src/js/`: site, gallery and contact scripts (the contact script submits to Web3Forms)
-- `public/`: static files copied as-is (images, icons). `source-images/`: untouched original photos
-- `scripts/`: build, image tool, local preview server, API tests
+Live site: https://velvet-howl.vercel.app/
 
-## Run it locally
+## About the business
+
+Every character has a story. VELVET HOWL brings yours to life — custom fursuits, fursona designs, and virtual avatars, each one built around your vision, your style, and the personality you want to share with the world. No two characters are exactly alike, and that is what makes each commission exciting.
+
+**Services**
+- Fursuit making — Head Only (from $1,500), Mini Partial (from $2,700), Partial (from $5,000), Full Suit (from $7,000+, provisional)
+- Fursona design — request a quote
+- VRChat avatar creation — request a quote
+- VTuber avatar creation — request a quote
+
+**Commissioning**
+- Ask for a quote through the commission form on the Contact page.
+- Quotes stay valid for 60 days. A non-refundable deposit secures your slot (payment plans available).
+- You receive work-in-progress updates while your piece is created.
+- Full details are on the Terms page — please read it before commissioning.
+
+**Contact**
+- Commission form: https://velvet-howl.vercel.app/contact
+- Discord: `horla_dimeji`
+
+## About this repo (for collaborators)
+
+Static site. `node scripts/build.mjs` builds `src/` + `data/` into `dist/`, which Vercel deploys. No server code: the commission form posts directly from the browser to Web3Forms.
+
+**Project layout**
+- `data/site.config.json` — links, nav, socials, services, prices and form settings (single source of truth; edit here first)
+- `data/gallery.json` — gallery items, categories, alt text and visibility flags
+- `src/pages/` — page bodies (first line is a meta comment with title and description)
+- `src/partials/` — shared head, header, footer, social block
+- `src/design-system.css`, `src/site.css` — design tokens and page styles
+- `src/js/` — site, gallery and contact scripts
+- `public/` — static files copied as-is. `source-images/` — untouched original photos
+- `scripts/` — build, preview server, form tests, QA checks
+
+**Run it locally**
 ```
 node scripts/build.mjs          # builds dist/
 npm run dev                     # build + preview at http://localhost:8000
-npm test                        # runs the form wiring tests (no real email is sent)
+npm test                        # form wiring tests (no real email is sent)
+node scripts/qa-check.mjs       # links, assets, SEO and gallery consistency
 ```
-`npm test` checks the service list, the Web3Forms payload, validation states and that no
-previous-provider code remains. It never contacts Web3Forms, so no real submission is sent.
-You can also open `dist/` with VS Code Live Server to look at the pages.
 
-## Commission form email setup (Web3Forms)
-The form posts directly to `https://api.web3forms.com/submit`. Web3Forms emails the
-application to the owner, using the applicant's `email` field as the **Reply-To** address,
-so pressing Reply in Gmail answers the applicant. No server code, secrets file or custom
-domain is involved. The public access key is intended by Web3Forms to live in the form.
+**Updating content**
+- Prices, links, services: edit `data/site.config.json`, rebuild.
+- Gallery: edit `data/gallery.json` (set `hidden` to show/hide), add image files under `public/images/portfolio/`, rebuild.
+- Copy: edit the page in `src/pages/`, rebuild. Shared header/footer live in `src/partials/`.
 
-Recipient: `abdullahkolawole48@gmail.com` (set by the Web3Forms account that owns the key).
+**Commission form (Web3Forms)**
+- The form posts to `https://api.web3forms.com/submit`. Applications go to the owner's Gmail; replying answers the applicant (their email is the Reply-To).
+- The access key in `data/site.config.json` belongs to the Web3Forms account created with the owner's Gmail. To rotate it: create the new key, paste it as `forms.accessKey`, rebuild, redeploy, then send a test application.
+- Free plan: 250 submissions/month, no file attachments (references go through links), no automatic confirmation email to applicants.
 
-### Setup steps for you
-1. Create an account at web3forms.com **with the `abdullahkolawole48@gmail.com` Gmail address**.
-2. Verify that email address when Web3Forms asks (check inbox and spam folder).
-3. Copy your access key from the Web3Forms dashboard.
-4. Open `data/site.config.json` and paste it as `forms.accessKey`, replacing `WEB3FORMS_ACCESS_KEY`.
-5. Run `node scripts/build.mjs` and redeploy the site (Vercel builds automatically on push).
-6. Submit a test application on the live site and check the Gmail inbox (and spam folder the first time).
-
-No environment variables are needed in Vercel for the form. If the access key is still the
-placeholder, submissions fail with an error message and no success is ever shown.
-
-### Testing a real submission
-Fill in the live form with a real applicant email you control, submit, then confirm:
-- the owner Gmail receives one application email containing every field, and
-- pressing Reply addresses the applicant (check the To: line before sending).
-
-### Free-plan limitations (current Web3Forms plans)
-- 250 submissions per month on the free plan.
-- **No file attachments on free.** Reference images must be shared through the
-  Reference Links field (FurAffinity, Toyhouse, Google Drive, Dropbox) until a paid
-  plan with uploads is added. Do not promise applicants that uploaded files will arrive.
-- **No automatic confirmation email to the applicant on free** (autoresponder is paid).
-  The success message only says the application was received; it never claims an email
-  was sent to the applicant.
-
-### Security notes
-- The browser validates every field first (required fields, email format, length limits).
-- A hidden `botcheck` honeypot field plus Web3Forms' spam protection block bots.
-- The submit button disables while sending, so double clicks cannot send twice.
-- Errors shown in the browser are generic. Web3Forms dashboard keeps the submission log.
-
-## Redirects
-`/gallary.html` goes to `/gallery` and `/term.html` goes to `/terms` (301, in `vercel.json`).
+**Deploy**
+- Push to `main` — Vercel builds (`node scripts/build.mjs`, output `dist/`) and deploys automatically.
+- Old URLs redirect: `/gallary.html` → `/gallery`, `/term.html` → `/terms` (301, in `vercel.json`).

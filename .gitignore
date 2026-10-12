@@ -3,3 +3,6 @@ node_modules
 .env
 .env.*
 .vercel
+# Internal working docs stay on this PC only, never pushed
+AGENT_RULES.md
+PROJECT_STATUS.md
