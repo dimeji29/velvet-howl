@@ -606,6 +606,116 @@
         "hidden":  false
     },
     {
+        "id":  "vfull-05",
+        "category":  "full",
+        "file":  "/images/portfolio/full/vfull-05.png",
+        "alt":  "White snow-leopard full fursuit with light blue and gray spots waving one paw against an orange and pink wall",
+        "thumbWidth":  512,
+        "thumbHeight":  1005,
+        "fullWidth":  512,
+        "fullHeight":  1005,
+        "hidden":  false
+    },
+    {
+        "id":  "vfull-06",
+        "category":  "full",
+        "file":  "/images/portfolio/full/vfull-06.png",
+        "alt":  "White snow-leopard full fursuit with light blue and gray spots posing with both paws raised against an orange and pink wall",
+        "thumbWidth":  509,
+        "thumbHeight":  1005,
+        "fullWidth":  509,
+        "fullHeight":  1005,
+        "hidden":  false
+    },
+    {
+        "id":  "vfull-07",
+        "category":  "full",
+        "file":  "/images/portfolio/full/vfull-07.png",
+        "alt":  "Gray full fursuit with a blue forelock and green eyes standing with arms crossed against an orange and pink wall",
+        "thumbWidth":  511,
+        "thumbHeight":  986,
+        "fullWidth":  511,
+        "fullHeight":  986,
+        "hidden":  false
+    },
+    {
+        "id":  "vfull-08",
+        "category":  "full",
+        "file":  "/images/portfolio/full/vfull-08.png",
+        "alt":  "Gray full fursuit with a blue forelock and green eyes leaning forward with one paw extended",
+        "thumbWidth":  505,
+        "thumbHeight":  986,
+        "fullWidth":  505,
+        "fullHeight":  986,
+        "hidden":  false
+    },
+    {
+        "id":  "vfull-09",
+        "category":  "full",
+        "file":  "/images/portfolio/full/vfull-09.png",
+        "alt":  "Pink, navy and white fox full fursuit with blue claws waving both paws against an orange and pink wall",
+        "thumbWidth":  756,
+        "thumbHeight":  1500,
+        "fullWidth":  756,
+        "fullHeight":  1500,
+        "hidden":  false
+    },
+    {
+        "id":  "vfull-10",
+        "category":  "full",
+        "file":  "/images/portfolio/full/vfull-10.png",
+        "alt":  "Back view of the pink, navy and white fox full fursuit showing the chevron back marking and long tail",
+        "thumbWidth":  761,
+        "thumbHeight":  1500,
+        "fullWidth":  761,
+        "fullHeight":  1500,
+        "hidden":  false
+    },
+    {
+        "id":  "vfull-11",
+        "category":  "full",
+        "file":  "/images/portfolio/full/vfull-11.jpg",
+        "alt":  "Brown and white fox full fursuit with blue eyes standing with arms spread in a doorway",
+        "thumbWidth":  589,
+        "thumbHeight":  1080,
+        "fullWidth":  589,
+        "fullHeight":  1080,
+        "hidden":  false
+    },
+    {
+        "id":  "vfull-12",
+        "category":  "full",
+        "file":  "/images/portfolio/full/vfull-12.jpg",
+        "alt":  "Gray wolf full fursuit with yellow eyes standing outdoors with both paws forward",
+        "thumbWidth":  721,
+        "thumbHeight":  1080,
+        "fullWidth":  721,
+        "fullHeight":  1080,
+        "hidden":  false
+    },
+    {
+        "id":  "vfull-13",
+        "category":  "full",
+        "file":  "/images/portfolio/full/vfull-13.jpg",
+        "alt":  "Gray wolf full fursuit with yellow eyes waving one paw outdoors in a grassy field",
+        "thumbWidth":  723,
+        "thumbHeight":  1080,
+        "fullWidth":  723,
+        "fullHeight":  1080,
+        "hidden":  false
+    },
+    {
+        "id":  "vfull-14",
+        "category":  "full",
+        "file":  "/images/portfolio/full/vfull-14.jpg",
+        "alt":  "Brown and white fox full fursuit with blue eyes waving one paw indoors",
+        "thumbWidth":  476,
+        "thumbHeight":  1080,
+        "fullWidth":  476,
+        "fullHeight":  1080,
+        "hidden":  false
+    },
+    {
         "id":  "vavatar-01",
         "category":  "avatar",
         "file":  "/images/portfolio/avatar/IMG-20261009-WA0164.jpg",
