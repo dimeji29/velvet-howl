@@ -2,7 +2,7 @@
 <main id="main">
 
   <section class="hero hero-slideshow">
-    <div class="hero-slides" aria-hidden="true">
+    <div class="hero-slides" aria-hidden="true" data-parallax="8">
       <img class="hero-slide is-active"
            src="/images/portfolio/full/vfull-01.jpg"
            srcset="/images/portfolio/full/vfull-01.jpg 719w"
@@ -46,8 +46,9 @@
 
   <section class="band">
     <div class="band-inner about">
-      <img class="about-image"
+      <img class="about-image float"
            src="/images/portfolio/full/vfull-04.jpg"
+           data-parallax="12"
            sizes="(min-width: 900px) 380px, 90vw"
            width="810" height="1080" loading="lazy"
            alt="Brown tabby striped full cat fursuit sitting on a green ottoman">
@@ -98,13 +99,50 @@
     <div class="band-inner">
       <p class="eyebrow">Recent work</p>
       <h2 class="h2">From the gallery</h2>
-      <ul class="work-grid">
-        <li><img src="/images/portfolio/head/vhead-02.jpg" sizes="(min-width: 900px) 25vw, 50vw" width="920" height="1080" loading="lazy" alt="White and turquoise fursuit dog head with a yellow nose on a stand"></li>
-        <li><img src="/images/portfolio/head/vhead-09.jpg" sizes="(min-width: 900px) 25vw, 50vw" width="735" height="994" loading="lazy" alt="White and light blue fursuit fox head with dark blue ear tips"></li>
-        <li><img src="/images/portfolio/head/vhead-19.jpg" sizes="(min-width: 900px) 25vw, 50vw" width="810" height="1080" loading="lazy" alt="Rust-orange fursuit head with a white forelock, green eyes and pink tongue in close-up"></li>
-        <li><img src="/images/portfolio/full/vfull-02.jpg" sizes="(min-width: 900px) 25vw, 50vw" width="719" height="1080" loading="lazy" alt="Close-up of the orange and white tiger-striped full fursuit outdoors"></li>
-      </ul>
+      <div class="marquee" data-marquee>
+        <ul class="work-grid marquee-track">
+          <li><img class="drift hover-lift" src="/images/portfolio/head/vhead-02.jpg" sizes="(min-width: 900px) 25vw, 50vw" width="920" height="1080" loading="lazy" alt="White and turquoise fursuit dog head with a yellow nose on a stand"></li>
+          <li><img class="drift hover-lift" src="/images/portfolio/head/vhead-09.jpg" sizes="(min-width: 900px) 25vw, 50vw" width="735" height="994" loading="lazy" alt="White and light blue fursuit fox head with dark blue ear tips"></li>
+          <li><img class="drift hover-lift" src="/images/portfolio/head/vhead-19.jpg" sizes="(min-width: 900px) 25vw, 50vw" width="810" height="1080" loading="lazy" alt="Rust-orange fursuit head with a white forelock, green eyes and pink tongue in close-up"></li>
+          <li><img class="drift hover-lift" src="/images/portfolio/full/vfull-02.jpg" sizes="(min-width: 900px) 25vw, 50vw" width="719" height="1080" loading="lazy" alt="Close-up of the orange and white tiger-striped full fursuit outdoors"></li>
+        </ul>
+        <button type="button" class="marquee-toggle" data-marquee-toggle aria-pressed="false" hidden>Pause movement</button>
+      </div>
       <p class="more"><a class="btn btn-navy" href="/gallery">Browse the full gallery</a></p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-inner">
+      <p class="eyebrow">How commissioning works</p>
+      <h2 class="h2">From idea to delivery</h2>
+      <ol class="service-list steps">
+        <li class="service-item">
+          <span class="step-n" aria-hidden="true">01</span>
+          <h3 class="h3">Request a quote</h3>
+          <p>Send your character idea through the commission form. Every quote stays valid for 60 days.</p>
+          <a href="/contact">Start your request</a>
+        </li>
+        <li class="service-item">
+          <span class="step-n" aria-hidden="true">02</span>
+          <h3 class="h3">Secure your slot</h3>
+          <p>A non-refundable deposit secures your slot, with payment plans if you need one.</p>
+          <a href="/pricing">See pricing</a>
+        </li>
+        <li class="service-item">
+          <span class="step-n" aria-hidden="true">03</span>
+          <h3 class="h3">Watch it take shape</h3>
+          <p>Follow along with work-in-progress updates while your piece is created.</p>
+          <a href="/gallery">See the work</a>
+        </li>
+        <li class="service-item">
+          <span class="step-n" aria-hidden="true">04</span>
+          <h3 class="h3">Pay, ship, enjoy</h3>
+          <p>Full payment is due before creation starts, and shipping is covered by you.</p>
+          <a href="/terms">Read the terms</a>
+        </li>
+      </ol>
+      <p class="more">The full details live in the <a href="/terms">terms of service</a> — please read them before commissioning.</p>
     </div>
   </section>
 

@@ -91,11 +91,56 @@ main{display:block;min-height:60vh}
 .about-text p{max-width:62ch}
 .about-cta{font-family:var(--font-display);font-size:1.25rem;color:var(--gold-ink)}
 .service-list,.work-grid{list-style:none;margin:2rem 0 0;padding:0;display:grid;gap:1rem}
-.service-item{background:var(--white);border:1px solid var(--line);border-top:3px solid var(--gold);border-radius:var(--r-md);padding:1.4rem}
-.service-item p{margin:.4rem 0 1rem;color:var(--muted)}
-.service-item a{color:var(--navy);font-weight:600;display:inline-flex;align-items:center;min-height:44px}
+.service-item{background:var(--white);border:1px solid var(--line);border-top:3px solid var(--gold);border-radius:var(--r-md);padding:1.4rem;transition:background-color var(--t-base) var(--ease),border-color var(--t-base) var(--ease),transform var(--t-base) var(--ease),box-shadow var(--t-base) var(--ease)}
+.service-item p{margin:.4rem 0 1rem;color:var(--muted);transition:color var(--t-base) var(--ease)}
+.service-item a{color:var(--navy);font-weight:600;display:inline-flex;align-items:center;min-height:44px;transition:color var(--t-base) var(--ease)}
+.step-n{display:block;font:600 .78rem/1 var(--font-body);letter-spacing:.22em;color:var(--gold-ink);margin-bottom:.6rem;transition:color var(--t-base) var(--ease)}
+@media(hover:hover){
+  .service-item:hover,.service-item:focus-within{background:var(--navy);border-color:var(--navy);border-top-color:var(--gold);transform:translateY(-4px);box-shadow:var(--shadow-2)}
+  .service-item:hover h3,.service-item:focus-within h3{color:var(--white)}
+  .service-item:hover p,.service-item:focus-within p{color:var(--mist)}
+  .service-item:hover a,.service-item:focus-within a{color:var(--gold-light)}
+  .service-item:hover .step-n,.service-item:focus-within .step-n{color:var(--gold)}
+}
+/* ===== Floating images (reusable: float / drift / float-tilt / hover-lift / parallax) ===== */
+/* Float keyframes use the independent `translate`/`rotate` properties so they
+   compose with the `transform` that cursor parallax (JS) and hover-lift set. */
+.float{animation:floatY var(--float-dur,7s) ease-in-out var(--float-delay,0s) infinite}
+.drift{animation:driftXY var(--float-dur,11s) ease-in-out var(--float-delay,0s) infinite}
+.float-tilt{animation:floatTilt var(--float-dur,8s) ease-in-out var(--float-delay,0s) infinite}
+@keyframes floatY{50%{translate:0 -10px}}
+@keyframes driftXY{33%{translate:8px -12px}66%{translate:-8px -6px}}
+@keyframes floatTilt{50%{translate:0 -10px;rotate:-1.1deg}}
+.hover-lift{transition:transform var(--t-base) var(--ease)}
+li:hover>.hover-lift,.hover-lift:hover{transform:scale(1.05)}
+[data-parallax]{will-change:transform}
+.hero-slides[data-parallax]{scale:1.07}
+.marquee-track li:nth-child(4n+1) .drift{--float-dur:9s;--float-delay:-1.5s}
+.marquee-track li:nth-child(4n+2) .drift{--float-dur:12s;--float-delay:-5s}
+.marquee-track li:nth-child(4n+3) .drift{--float-dur:10s;--float-delay:-3s}
+.marquee-track li:nth-child(4n) .drift{--float-dur:13s;--float-delay:-7s}
+@media(max-width:700px){
+  @keyframes floatY{50%{translate:0 -6px}}
+  @keyframes driftXY{33%{translate:5px -7px}66%{translate:-5px -4px}}
+  @keyframes floatTilt{50%{translate:0 -6px;rotate:-.7deg}}
+}
+@media (prefers-reduced-motion:reduce){
+  .float,.drift,.float-tilt{animation:none}
+}
 .work-grid{grid-template-columns:repeat(2,1fr)}
 .work-grid img{width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;border-radius:var(--r-md);display:block}
+/* Passing gallery strip: static grid until JS enhances it into a loop */
+.marquee{overflow:hidden;margin:2rem 0 0}
+.marquee .work-grid{margin:0}
+.marquee.is-live .work-grid{display:flex;gap:1rem;width:max-content;animation:marqueeMove 26s linear infinite}
+.marquee.is-live .work-grid li{flex:0 0 auto;width:min(66vw,260px)}
+.marquee.is-live:hover .work-grid,.marquee.is-live:focus-within .work-grid,.marquee.is-paused .work-grid{animation-play-state:paused}
+.marquee-toggle{margin-top:1rem;background:transparent;border:1px solid var(--line);border-radius:999px;padding:.55rem 1.2rem;min-height:44px;font:600 .8rem var(--font-body);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);cursor:pointer}
+.marquee-toggle:hover{border-color:var(--gold-ink);color:var(--gold-ink)}
+@keyframes marqueeMove{to{transform:translateX(calc(-50% - .5rem))}}
+@media (prefers-reduced-motion:reduce){
+  .marquee.is-live .work-grid{animation:none}
+}
 .more{margin:2rem 0 0}
 .more a:not(.btn){display:inline-flex;align-items:center;min-height:44px;color:var(--navy);font-weight:600}
 .contact-band{background:var(--navy);color:var(--white)}
@@ -106,6 +151,7 @@ main{display:block;min-height:60vh}
   .about{grid-template-columns:380px 1fr;gap:3rem}
   .service-list{grid-template-columns:repeat(4,1fr)}
   .work-grid{grid-template-columns:repeat(4,1fr)}
+  .marquee.is-live .work-grid li{width:300px}
 }
 
 /* ===== Gallery ===== */

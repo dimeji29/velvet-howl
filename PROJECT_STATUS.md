@@ -493,6 +493,56 @@ accessibility audit).
   PROJECT_STATUS) unpushed to dimeji29. Push + Vercel redeploy, then
   retest live. Verified local: build 6 pages, npm test 11/11,
   qa-check 9/9, 116 tiles.
+- Service-card hover (Oct 11 2026, user: homepage cards need hover):
+  .service-item now lifts (-4px + shadow) and flips to plum background
+  on hover/focus-within (gold top border kept); heading -> white, text ->
+  mist, link -> lilac. Hover-only media so mobile tap never sticks;
+  reduced-motion already disables it. Contrast checked: white 17.3,
+  lilac 11.1, mist 10.2 on plum (all pass AA). Applies to homepage +
+  pricing quote cards (shared class). Verified: build 6 pages,
+  npm test 11/11, qa-check 9/9, 116 tiles, dist carries new CSS.
+- Passing gallery strip (Oct 11 2026, user: homepage "From the gallery"
+  should move smoothly): work-grid now sits in a marquee that JS doubles
+  (2nd half aria-hidden) and loops seamlessly (36s linear, pause on
+  hover/focus + Pause/Play button, no motion at all under
+  prefers-reduced-motion, static grid with no JS). Verified: build
+  6 pages, npm test 11/11, qa-check 9/9, 116 tiles, dist carries
+  marquee markup/CSS/JS.
+- Floating-image animation (Oct 11 2026, user prompt: premium float like
+  furfinder.cc): reusable utilities in src/site.css (float/drift/
+  float-tilt keyframes on the independent translate+rotate props so they
+  compose with transform-based parallax/hover; per-image stagger via
+  --float-dur/--float-delay + marquee nth-child rules; hover-lift scale;
+  data-parallax depths; amplitude halved under 700px; all off under
+  prefers-reduced-motion). Applied: About portrait float+parallax(12),
+  Services portrait float-tilt+parallax(12), hero backgrounds
+  parallax(8, bleed scale 1.07), strip tiles drift+hover-lift. Gallery
+  viewer tiles left stable on purpose. Cursor parallax in src/js/site.js
+  (fine-pointer only, lerped rAF, idle when settled). Verified: build
+  6 pages, npm test 11/11, qa-check 9/9, 116 tiles, node --check JS OK,
+  dist carries markup/CSS/JS; overflow safe (transforms only, max 14px,
+  body overflow-x hidden).
+- Marquee speed (Oct 11 2026, user: strip felt slow): loop 36s -> 26s,
+  portraits untouched. Verified: build 6 pages, npm test 11/11,
+  qa-check 9/9.
+- Gallery top showcase (Oct 11 2026, user: add something at the top):
+  slim 3-photo strip under the lead (vhead-03 husky, vpartial-05 partial
+  set, vfull-03 tabby — none featured on homepage; float stagger +
+  hover-lift, width/height set, lazy). No big banner on purpose: keeps
+  the 116 tiles one scroll away. Verified: build 6 pages,
+  npm test 11/11, qa-check 9/9, 116 tiles.
+- Showcase removed (Oct 11 2026, user doubted it, agreed): the trio
+  didn't hold up — husky collage is landscape (bad 4/5 crop), partial
+  shot is a cluttered workshop photo, and all three repeat in the grid
+  below. Gallery top back to title + lead + filters. Verified: build
+  6 pages, npm test 11/11, qa-check 9/9, 116 tiles.
+- How-it-works strip (Oct 11 2026, user picked standout option 1):
+  homepage gains "From idea to delivery" — 4 numbered cards reusing
+  .service-item + hover (quote 60-day validity, non-refundable deposit +
+  payment plans, WIP updates, full payment before creation + client
+  shipping; every line traceable to Terms, no promises invented).
+  Step numbers gold-ink -> lilac on hover (7.25 contrast, passes AA).
+  Verified: build 6 pages, npm test 11/11, qa-check 9/9, 116 tiles.
 
 ## 14. Session rule (locked, Oct 10 2026)
 - At the START of every session: read PROJECT_STATUS.md, README.md and
