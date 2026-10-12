@@ -9,7 +9,7 @@ Live site: https://velvet-howl.vercel.app/
 Every character has a story. VELVET HOWL brings yours to life — custom fursuits, fursona designs, and virtual avatars, each one built around your vision, your style, and the personality you want to share with the world. No two characters are exactly alike, and that is what makes each commission exciting.
 
 **Services**
-- Fursuit making — Head Only (from $1,500), Mini Partial (from $2,700), Partial (from $5,000), Full Suit (from $7,000+, provisional)
+- Fursuit making — Head Only (from $1,500), Mini Partial (from $2,700), Partial (from $5,000), Full Suit (from $7,000)
 - Fursona design — request a quote
 - VRChat avatar creation — request a quote
 - VTuber avatar creation — request a quote

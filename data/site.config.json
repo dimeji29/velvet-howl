@@ -80,8 +80,8 @@
       "value": "fursuit-full",
       "label": "Fursuit — Full Suit",
       "price": "$7,000+",
-      "priceConfirmed": false,
-      "priceNote": "Provisional starting price. Change it here when the client confirms the final price."
+      "priceConfirmed": true,
+      "priceNote": "Confirmed starting price (owner, Oct 2026)."
     },
     {
       "value": "fursona-design",

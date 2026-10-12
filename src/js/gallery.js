@@ -29,6 +29,7 @@
 
   function show(index) {
     var list = visibleTiles();
+    if (!list.length) return;
     current = (index + list.length) % list.length;
     var data = list[current].querySelector('.tile-button').dataset;
     video.pause();
@@ -79,6 +80,25 @@
     video.pause();
     if (opener) opener.focus();
   });
+
+  // Staggered rise-in on scroll. Skipped without IO or under reduced
+  // motion (tiles stay visible). Works with filtering: un-hiding a tile
+  // re-triggers intersection for in-viewport tiles.
+  var grid = document.querySelector('.gallery-grid');
+  if (grid && !window.matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window) {
+    grid.classList.add('reveal-tiles');
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        io.unobserve(entry.target);
+        entry.target.classList.add('in');
+      });
+    }, { rootMargin: '0px 0px 10% 0px', threshold: 0.05 });
+    tiles.forEach(function (tile, i) {
+      tile.style.transitionDelay = ((i % 8) * 45) + 'ms';
+      io.observe(tile);
+    });
+  }
 
   applyFilter('all');
 })();

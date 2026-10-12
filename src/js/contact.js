@@ -172,9 +172,15 @@
     }
 
     setSubmitting(true);
+    var controller = 'AbortController' in window ? new AbortController() : null;
+    var timer = null;
+    if (controller) {
+      timer = setTimeout(function () { controller.abort(); }, 20000);
+    }
     fetch(WEB3FORMS_URL, {
       method: 'POST',
-      body: buildPayload(data)
+      body: buildPayload(data),
+      signal: controller ? controller.signal : undefined
     })
       .then(function (response) {
         return response.json().catch(function () { return {}; }).then(function (body) {
@@ -190,8 +196,17 @@
           showFailure();
         }
       })
-      .catch(function () { showFailure(); })
-      .then(function () { setSubmitting(false); });
+      .catch(function (err) {
+        if (err && err.name === 'AbortError') {
+          showFailure('The request took too long. Please check your connection and try again.');
+        } else {
+          showFailure();
+        }
+      })
+      .then(function () {
+        if (timer) clearTimeout(timer);
+        setSubmitting(false);
+      });
   });
 
   fieldNames.forEach(function (name) {
