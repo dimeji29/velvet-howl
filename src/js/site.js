@@ -111,4 +111,30 @@
       if(!pRaf)pRaf=requestAnimationFrame(pTick);
     },{passive:true});
   }
+  document.querySelectorAll('[data-foot-toggle]').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var panel=document.getElementById(btn.getAttribute('data-foot-toggle'));
+      if(!panel)return;
+      var willOpen=panel.hidden;
+      var list=btn.closest('.foot-social');
+      if(list){
+        list.querySelectorAll('.foot-pop').forEach(function(p){p.hidden=true});
+        list.querySelectorAll('[data-foot-toggle]').forEach(function(b){
+          b.setAttribute('aria-expanded','false');
+          b.setAttribute('aria-label',b.getAttribute('aria-label').replace('Hide ','Show '));
+        });
+      }
+      panel.hidden=!willOpen;
+      btn.setAttribute('aria-expanded',willOpen?'true':'false');
+      btn.setAttribute('aria-label',(btn.getAttribute('aria-label')||'').replace(willOpen?'Show ':'Hide ',willOpen?'Hide ':'Show '));
+    });
+  });
+  document.addEventListener('keydown',function(e){
+    if(e.key!=='Escape')return;
+    document.querySelectorAll('.foot-pop:not([hidden])').forEach(function(panel){
+      panel.hidden=true;
+      var btn=document.querySelector('[data-foot-toggle="'+panel.id+'"]');
+      if(btn){btn.setAttribute('aria-expanded','false');btn.setAttribute('aria-label',btn.getAttribute('aria-label').replace('Hide ','Show '));btn.focus()}
+    });
+  });
 })();

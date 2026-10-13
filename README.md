@@ -23,6 +23,7 @@ Every character has a story. VELVET HOWL brings yours to life — custom fursuit
 **Contact**
 - Commission form: https://velvet-howl.vercel.app/contact
 - Discord: `horla_dimeji`
+- Telegram: `horlah_dimehji` — https://t.me/horlah_dimehji
 
 ## About this repo (for collaborators)
 

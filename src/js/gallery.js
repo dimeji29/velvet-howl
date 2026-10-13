@@ -8,6 +8,8 @@
   var image = dialog.querySelector('.lightbox-image');
   var video = dialog.querySelector('.lightbox-video');
   var caption = dialog.querySelector('.lightbox-caption');
+  var moreBtn = document.querySelector('[data-load-more]');
+  var PAGE = 24, shown = PAGE, activeCategory = 'all';
   var current = -1;
   var opener = null;
 
@@ -16,15 +18,29 @@
   }
 
   function applyFilter(category) {
-    tiles.forEach(function (tile) {
-      tile.hidden = category !== 'all' && tile.dataset.category !== category;
-    });
+    activeCategory = category;
+    shown = PAGE;
+    renderPaged();
     buttons.forEach(function (button) {
       button.setAttribute('aria-pressed', button.dataset.filter === category);
     });
-    var count = visibleTiles().length;
-    emptyMessage.hidden = count > 0;
-    status.textContent = count > 0 ? 'Showing ' + count + ' items' : '';
+  }
+
+  function renderPaged() {
+    var matching = tiles.filter(function (tile) {
+      return activeCategory === 'all' || tile.dataset.category === activeCategory;
+    });
+    matching.forEach(function (tile, i) {
+      tile.hidden = i >= shown;
+    });
+    tiles.forEach(function (tile) {
+      if (activeCategory !== 'all' && tile.dataset.category !== activeCategory) tile.hidden = true;
+    });
+    var total = matching.length;
+    var showing = Math.min(shown, total);
+    emptyMessage.hidden = total > 0;
+    status.textContent = total > 0 ? 'Showing ' + showing + ' of ' + total + ' items' : '';
+    if (moreBtn) moreBtn.hidden = shown >= total || total === 0;
   }
 
   function show(index) {
@@ -55,6 +71,11 @@
 
   buttons.forEach(function (button) {
     button.addEventListener('click', function () { applyFilter(button.dataset.filter); });
+  });
+
+  if (moreBtn) moreBtn.addEventListener('click', function () {
+    shown += PAGE;
+    renderPaged();
   });
 
   tiles.forEach(function (tile) {

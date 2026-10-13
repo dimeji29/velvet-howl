@@ -11,6 +11,13 @@
       "open": "Open Discord"
     },
     {
+      "id": "telegram",
+      "label": "Telegram",
+      "user": "horlah_dimehji",
+      "url": "https://t.me/horlah_dimehji",
+      "open": "Open Telegram"
+    },
+    {
       "id": "email",
       "label": "Email",
       "user": "Hidden until tapped",

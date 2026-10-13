@@ -33,9 +33,25 @@ main{display:block;min-height:60vh}
 .foot-nav a{color:var(--white);text-decoration:none;min-height:44px;display:flex;align-items:center;padding:.1rem 0}
 .foot-nav a:hover{color:var(--gold-light)}
 .foot-tag{color:var(--mist);max-width:36ch;font-size:.9rem}
-.foot-social{list-style:none;margin:0;padding:0;display:grid;gap:0}
-.foot-social a{color:var(--gold-light);text-decoration:none;display:flex;align-items:center;min-height:44px}
-.foot-social a:hover{color:var(--gold);text-decoration:underline}
+.foot-social{list-style:none;margin:0;padding:0;display:flex;gap:.8rem;align-items:flex-start;flex-wrap:wrap}
+.foot-item{position:relative}
+.foot-icon{width:48px;height:48px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;background:rgba(183,156,219,.14);border:1px solid rgba(183,156,219,.45);color:var(--gold-light);cursor:pointer;transition:background-color var(--t-fast) var(--ease),color var(--t-fast) var(--ease),border-color var(--t-fast) var(--ease),transform var(--t-fast) var(--ease),box-shadow var(--t-fast) var(--ease)}
+.foot-icon svg{width:24px;height:24px;fill:currentColor}
+.foot-icon:hover{background:var(--gold);border-color:var(--gold);color:var(--navy);transform:translateY(-2px);box-shadow:var(--shadow-1)}
+.foot-icon[aria-expanded="true"]{background:var(--gold);border-color:var(--gold);color:var(--navy)}
+.foot-pop{position:absolute;left:0;bottom:calc(100% + 12px);width:max-content;min-width:min(200px,calc(100vw - 32px));max-width:min(250px,calc(100vw - 32px));margin:0;background:var(--white);color:var(--navy);border:1px solid var(--line);border-radius:var(--r-md);padding:.8rem .9rem;box-shadow:var(--shadow-2);z-index:5}
+.foot-pop::after{content:"";position:absolute;left:16px;bottom:-7px;width:12px;height:12px;background:var(--white);border-right:1px solid var(--line);border-bottom:1px solid var(--line);transform:rotate(45deg)}
+@media(min-width:700px){
+.foot-item:last-child .foot-pop{left:auto;right:0}
+.foot-item:last-child .foot-pop::after{left:auto;right:16px}
+}
+.foot-user{margin:0 0 .6rem;font-weight:700;font-size:.9rem;overflow-wrap:anywhere}
+.foot-row{display:flex;gap:.5rem;margin:0;flex-wrap:wrap}
+.foot-row .btn{flex:1 1 auto}
+.foot-pop .btn-sm{min-height:40px;padding:.5rem .9rem;font-size:.7rem}
+.foot-pop .btn-ghost{color:var(--navy);border-color:var(--navy)}
+.foot-pop .btn-ghost:hover{background:var(--navy);color:var(--white)}
+.foot-pop .toast{margin:.5rem 0 0;font-size:.8rem;color:var(--gold-ink);min-height:1.2em}
 .foot-h{font:600 .75rem var(--font-body);letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin:0 0 1rem}
 .contact-grid{display:grid;gap:1rem;grid-template-columns:1fr}
 .foot-mail{margin:1.5rem 0 0;display:flex;gap:.8rem;align-items:center;flex-wrap:wrap}
@@ -102,6 +118,14 @@ main{display:block;min-height:60vh}
   .service-item:hover a,.service-item:focus-within a{color:var(--gold-light)}
   .service-item:hover .step-n,.service-item:focus-within .step-n{color:var(--gold)}
 }
+/* Touch + keyboard: phones have no hover, so tap (:active) and tab-focus
+   (:focus-within) flip the same plum colors without the lift. :active only
+   lasts while the finger is down, so it never sticks. */
+.service-item:active,.service-item:focus-within{background:var(--navy);border-color:var(--navy);border-top-color:var(--gold)}
+.service-item:active h3,.service-item:focus-within h3{color:var(--white)}
+.service-item:active p,.service-item:focus-within p{color:var(--mist)}
+.service-item:active a,.service-item:focus-within a{color:var(--gold-light)}
+.service-item:active .step-n,.service-item:focus-within .step-n{color:var(--gold)}
 /* ===== Floating images (reusable: float / drift / float-tilt / hover-lift / parallax) ===== */
 /* Float keyframes use the independent `translate`/`rotate` properties so they
    compose with the `transform` that cursor parallax (JS) and hover-lift set. */
@@ -160,8 +184,10 @@ li:hover>.hover-lift,.hover-lift:hover{transform:scale(1.05)}
 .gallery-status{margin:0 0 1rem;color:var(--muted);font-size:.85rem;min-height:1.4em}
 .gallery-empty{padding:1.2rem;border:2px dashed var(--gold-ink);border-radius:var(--r-md);background:var(--white);color:var(--gold-ink);font-weight:500}
 .gallery-grid{list-style:none;margin:0;padding:0;columns:2;column-gap:.8rem}
-.tile{break-inside:avoid;margin:0 0 .8rem}
-.tile[hidden]{display:none}
+.tile{break-inside:avoid;margin:0 0 .8rem;content-visibility:auto;contain-intrinsic-size:300px 380px}
+.tile[hidden]{display:none;content-visibility:hidden}
+.load-more-wrap{margin:1.6rem 0 0;text-align:center}
+.load-more-wrap .btn[hidden]{display:none}
 .tile-button{display:block;width:100%;padding:0;border:0;background:var(--white);border-radius:var(--r-md);overflow:hidden;cursor:zoom-in;box-shadow:var(--shadow-1);transition:transform var(--t-base) var(--ease),box-shadow var(--t-base) var(--ease);position:relative}
 .tile-button:hover{transform:translateY(-3px);box-shadow:var(--shadow-2)}
 .tile-button img{transition:transform var(--t-slow) var(--ease)}
